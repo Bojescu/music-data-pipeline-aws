@@ -14,19 +14,5 @@ This project automates the aggregation of music chart data stored in `.csv` file
 4. Tested the system by uploading and deleting files, as well as waiting for the scheduled trigger.
 5. Verified successful execution in **CloudWatch Logs** and confirmed output in the final S3 path.
 
-## ❌ Did Everything Work on the First Try?
-Not exactly:
-- Had to correct the cron expression and account for the time difference between local time and UTC.
-- Had to ensure the output file was **public** by disabling “Block all public access” in S3.
-
-## 🛠️ How I Solved the Issues
-- Used `cron(55 7 * * ? *)` for testing at 9:55 AM local time (France).
-- Used **CloudWatch logs** to track trigger events and debug.
-
-## 🔁 What I Would Do Differently Next Time
-1. Use **Terraform** or **CloudFormation** for infrastructure replication.
-2. Add an **automatic validation step** that sends an email if the output CSV is missing.
-3. Implement **local testing** using `sam local invoke` before deployment.
-
 ## ✅ Final Conclusion
 This project demonstrates the transition from manual processing to **fully automated cloud-based data pipelines**. By integrating AWS Lambda, S3, and EventBridge, I created a serverless solution that triggers on both schedule and event-based rules. The workflow is **scalable, reliable**, and suitable for professional **data engineering environments**.
